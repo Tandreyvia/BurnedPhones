@@ -10,20 +10,19 @@ public class Server : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
+
 		manager.StartServer ();
+		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (NetworkServer.connections.Count > 0 && !first) {
-			NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
-			first = true;
-		}
+		
 	}
 
-    void OnClientConnected()
+	void OnClientConnected(NetworkMessage netMsg)
     {
-        print("rawr");
+		NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
     }
-	
 }

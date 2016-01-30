@@ -23,7 +23,7 @@ public class CubeTestSpinServer : NetworkBehaviour {
             
             if(timeUntilNextMove <= 0)
             {
-                transform.position = new Vector3(-7 + Random.value * 14, -5 + Random.value * 10, transform.position.z);
+                transform.position = new Vector3(-2 + Random.value * 4, -2 + Random.value * 4, transform.position.z);
                 timeUntilNextMove = timeBetweenMoves;
             }
             timeUntilNextMove -= Time.smoothDeltaTime;
