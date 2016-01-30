@@ -11,6 +11,7 @@ public class PlayerUnit : NetworkBehaviour {
     float baseMovementSpeed = 6.0f;
 
     float timeLeftOnFire = 0.0f;
+    public bool holdingCandle = false;
 
     // Use this for initialization
     void Start () {
@@ -19,9 +20,14 @@ public class PlayerUnit : NetworkBehaviour {
             localSingleton = this;
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void PickUpCandle()
+    {
+        holdingCandle = true;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (!isServer && hasAuthority)
         {
             UpdateInput();

@@ -9,8 +9,11 @@ public class Server : NetworkBehaviour {
 	}
 
 	public NetworkManager manager;
-	public List<NetworkConnection> connections = new List<NetworkConnection>();
+
+	List<NetworkConnection> connections = new List<NetworkConnection>();
 	public List<Team> teams = new List<Team> ();
+
+    public GameObject goat;
 
 
 	// Use this for initialization
@@ -42,7 +45,8 @@ public class Server : NetworkBehaviour {
     {
 		connections.Add (netMsg.conn);
 		teams.Add (Team.Undeclared);
-		//NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
+        NetworkServer.Spawn((GameObject)GameObject.Instantiate (goat, new Vector3(2, 4, transform.position.z), transform.rotation));
+        print("meow~");
     }
 
 	void OnRedDecide(NetworkMessage netMsg) {
