@@ -15,10 +15,6 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-
-	void OnConnectedToServer () {
-		print ("connected");
+		print (client.isConnected);
 	}
 }
