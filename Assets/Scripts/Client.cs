@@ -6,7 +6,7 @@ public class Client : MonoBehaviour {
 
 	NetworkClient client;
 	public NetworkManager manager;
-	public GameObject cube;
+	public GameObject camera;
 	bool hasConnected = false;
 
 	// Use this for initialization
@@ -15,11 +15,12 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (client != null && client.isConnected) {
+			hasConnected = true;
+			camera.AddComponent<TeamSelectGui> ().client = this.client;
+		}
 		if (!hasConnected) {
 			client = manager.StartClient ();
-            if (client != null) {
-                hasConnected = true;
-            }
         }
         print(client.isConnected);
 
