@@ -21,5 +21,8 @@ public class Client : MonoBehaviour {
                 hasConnected = true;
             }
         }
+        print(client.isConnected);
+
+        print(Input.GetAxis("Horizontal"));
 	}
 }

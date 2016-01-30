@@ -10,10 +10,10 @@ public class Server : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        //manager.connectionConfig.FragmentSize = 1000;
+        //manager.connectionConfig.MaxSentMessageQueueSize = 5000;
 		manager.StartServer ();
 		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
-
 	}
 	
 	// Update is called once per frame
