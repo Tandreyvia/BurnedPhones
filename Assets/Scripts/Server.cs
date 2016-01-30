@@ -23,6 +23,6 @@ public class Server : NetworkBehaviour {
 
 	void OnClientConnected(NetworkMessage netMsg)
     {
-		NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
+		//NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
     }
 }
