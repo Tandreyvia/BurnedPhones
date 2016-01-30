@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Client : MonoBehaviour {
+public class Client : NetworkBehaviour {
 
 	NetworkClient client;
 	public NetworkManager manager;
@@ -11,19 +11,18 @@ public class Client : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+			client = manager.StartClient ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!hasConnected) {
-			client = manager.StartClient ();
-			if (client != null && client.isConnected) {
-				hasConnected = true;
-				camera.AddComponent<TeamSelectGui> ().client = this.client;
-			}
-        }
         print(client.isConnected);
 
         print(Input.GetAxis("Horizontal"));
+	}
+
+	public override void OnStartClient()
+	{
+		camera.AddComponent<TeamSelectGui> ().client = this.client;
 	}
 }
