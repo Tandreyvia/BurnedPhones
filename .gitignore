@@ -21,7 +21,10 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
-
+*.exe
+*.apk
+*.pdb
+/BurnedPhones_Data/
 
 # Unity3D generated meta files
 *.pidb.meta
