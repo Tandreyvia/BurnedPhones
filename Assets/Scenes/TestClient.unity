@@ -124,7 +124,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab3a37cf9eba4003986842869e2b180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1353231476}
   cube: {fileID: 125324, guid: fe62de28f6d684d64b1ef17afe368925, type: 2}
+--- !u!1001 &1353231475
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 411308, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ec21e9fd3ff56462d9dcd8d019501c36, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1353231476 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11405650, guid: ec21e9fd3ff56462d9dcd8d019501c36,
+    type: 2}
+  m_PrefabInternal: {fileID: 1353231475}
+  m_Script: {fileID: -822479833, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
 --- !u!1 &1471095693
 GameObject:
   m_ObjectHideFlags: 0

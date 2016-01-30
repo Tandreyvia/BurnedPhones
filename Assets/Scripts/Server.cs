@@ -5,11 +5,12 @@ using System.Collections;
 public class Server : NetworkBehaviour {
 
 	public GameObject cube;
-	NetworkClient local;
+	public NetworkManager manager;
 
 	// Use this for initialization
 	void Start () {
 		NetworkServer.Listen (4444);
+		manager.StartServer ();
 	}
 	
 	// Update is called once per frame
