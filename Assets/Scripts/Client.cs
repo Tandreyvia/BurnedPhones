@@ -9,7 +9,7 @@ public class Client : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		client = new NetworkClient ();
-		client.Connect("127.0.0.1", 1337);
+		client.Connect("192.168.2.4", 1337);
 	
 	}
 	
