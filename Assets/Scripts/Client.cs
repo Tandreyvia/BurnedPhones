@@ -11,18 +11,15 @@ public class Client : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			client = manager.StartClient ();
+		client = manager.StartClient ();
+		camera.AddComponent<TeamSelectGui> ().client = this.client;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        print(client.isConnected);
+		print (client.isConnected);
 
-        print(Input.GetAxis("Horizontal"));
-	}
-
-	public override void OnStartClient()
-	{
-		camera.AddComponent<TeamSelectGui> ().client = this.client;
+		print (Input.GetAxis ("Horizontal"));
 	}
 }
