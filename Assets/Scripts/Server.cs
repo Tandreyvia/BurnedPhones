@@ -2,20 +2,21 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Server : MonoBehaviour {
+public class Server : NetworkBehaviour {
 
 	public GameObject cube;
+	NetworkClient local;
 
 	// Use this for initialization
 	void Start () {
 		NetworkServer.Listen (4444);
-		NetworkServer.Spawn (cube);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		print (NetworkServer.connections.Count);
+		if (NetworkServer.connections.Count > 0) {
+			NetworkServer.Spawn (cube);
+		}
 	
 	}
 	
