@@ -43,7 +43,7 @@ public class Server : NetworkBehaviour {
     {
 		connections.Add (netMsg.conn);
 		teams.Add (Team.Undeclared);
-		NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
+		//NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
     }
 
 	void OnRedDecide(NetworkMessage netMsg) {
