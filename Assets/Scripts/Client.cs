@@ -2,19 +2,23 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Server : MonoBehaviour {
+public class Client : MonoBehaviour {
 
+	NetworkClient client;
 
 	// Use this for initialization
 	void Start () {
-		NetworkServer.Listen (1337);
+		client = new NetworkClient ();
+		client.Connect("127.0.0.1", 1337);
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		print (NetworkServer.connections.Count);
 	
 	}
-	
+
+	void OnConnectedToServer () {
+		print ("connected");
+	}
 }
