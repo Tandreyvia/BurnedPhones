@@ -15,12 +15,12 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (client != null && client.isConnected) {
-			hasConnected = true;
-			camera.AddComponent<TeamSelectGui> ().client = this.client;
-		}
 		if (!hasConnected) {
 			client = manager.StartClient ();
+			if (client != null && client.isConnected) {
+				hasConnected = true;
+				camera.AddComponent<TeamSelectGui> ().client = this.client;
+			}
         }
         print(client.isConnected);
 
