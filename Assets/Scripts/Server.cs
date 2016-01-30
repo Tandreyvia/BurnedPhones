@@ -2,17 +2,27 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Server : MonoBehaviour {
+public class Server : NetworkBehaviour {
 
-	public NetworkManager networkManager;
+	public GameObject cube;
+	public NetworkManager manager;
+	bool first = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        //manager.connectionConfig.FragmentSize = 1000;
+        //manager.connectionConfig.MaxSentMessageQueueSize = 5000;
+		manager.StartServer ();
+		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
+
+	void OnClientConnected(NetworkMessage netMsg)
+    {
+		NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, transform.rotation));
+    }
 }
