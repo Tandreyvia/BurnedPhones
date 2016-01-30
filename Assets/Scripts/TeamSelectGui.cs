@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 using System.Collections;
 
 public class TeamSelectGui : MonoBehaviour {
-
+	public NetworkClient client;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,5 +13,16 @@ public class TeamSelectGui : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnGUI() {
+		if (GUI.Button (new Rect (10, 10, 10, 10), "red team")) {
+			client.Send (MsgType.Highest + 1, new EmptyMessage());
+			DestroyImmediate (this);
+		}
+		if (GUI.Button (new Rect (30, 30, 10, 10), "blue team")) {
+			client.Send (MsgType.Highest + 2, new EmptyMessage());
+			DestroyImmediate (this);
+		}
 	}
 }

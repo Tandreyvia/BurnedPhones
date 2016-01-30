@@ -8,7 +8,6 @@ public class Server : NetworkBehaviour {
 		Red, Blue, Undeclared
 	}
 
-	public GameObject cube;
 	public NetworkManager manager;
 	List<NetworkConnection> connections = new List<NetworkConnection>();
 	List<Team> teams = new List<Team> ();
@@ -52,6 +51,7 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Red;
+		print ("red");
 	}
 
 	void OnBlueDecide(NetworkMessage netMsg) {
@@ -60,5 +60,6 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Blue;
+		print ("blue");
 	}
 }
