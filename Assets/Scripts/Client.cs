@@ -9,12 +9,13 @@ public class Client : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		client = new NetworkClient ();
-		client.Connect("192.168.2.4", 1337);
+		client.Connect("192.168.2.4", 4444);
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		print (client.isConnected);
+
 	}
 }

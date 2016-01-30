@@ -7,7 +7,7 @@ public class Server : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		NetworkServer.Listen (1337);
+		NetworkServer.Listen (4444);
 	}
 	
 	// Update is called once per frame
