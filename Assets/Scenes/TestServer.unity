@@ -129,7 +129,7 @@ MonoBehaviour:
   m_SpawnPrefabs:
   - {fileID: 124574, guid: 01cfcdf779cbd43ecbba48fa32376647, type: 2}
   - {fileID: 125324, guid: fe62de28f6d684d64b1ef17afe368925, type: 2}
-  m_CustomConfig: 0
+  m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
     m_PacketSize: 1500
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_ReactorMaximumReceivedMessages: 1024
     m_ReactorMaximumSentMessages: 1024
     m_MaxPacketSize: 2000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -354,7 +354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85f085b7b49e4cdea668a5adb3cf496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 125324, guid: fe62de28f6d684d64b1ef17afe368925, type: 2}
+  cube: {fileID: 124574, guid: 01cfcdf779cbd43ecbba48fa32376647, type: 2}
+  manager: {fileID: 224113806}
 --- !u!4 &1585404589
 Transform:
   m_ObjectHideFlags: 0
