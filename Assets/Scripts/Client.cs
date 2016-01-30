@@ -11,7 +11,7 @@ public class Client : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			client = manager.StartClient ();
+		client = manager.StartClient ();
 	}
 	
 	// Update is called once per frame
