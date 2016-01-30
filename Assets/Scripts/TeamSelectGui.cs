@@ -16,11 +16,11 @@ public class TeamSelectGui : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		if (GUI.Button (new Rect (10, 10, 10, 10), "red team")) {
+		if (GUI.Button (new Rect (10, 140, 100, 100), "red team")) {
 			client.Send (MsgType.Highest + 1, new EmptyMessage());
 			DestroyImmediate (this);
 		}
-		if (GUI.Button (new Rect (30, 30, 10, 10), "blue team")) {
+		if (GUI.Button (new Rect (150, 140, 100, 100), "blue team")) {
 			client.Send (MsgType.Highest + 2, new EmptyMessage());
 			DestroyImmediate (this);
 		}

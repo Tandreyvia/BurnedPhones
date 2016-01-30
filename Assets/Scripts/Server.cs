@@ -9,8 +9,8 @@ public class Server : NetworkBehaviour {
 	}
 
 	public NetworkManager manager;
-	List<NetworkConnection> connections = new List<NetworkConnection>();
-	List<Team> teams = new List<Team> ();
+	public List<NetworkConnection> connections = new List<NetworkConnection>();
+	public List<Team> teams = new List<Team> ();
 
 
 	// Use this for initialization
@@ -20,7 +20,7 @@ public class Server : NetworkBehaviour {
 		manager.StartServer ();
 		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
 		NetworkServer.RegisterHandler (MsgType.Highest + 1, OnRedDecide);
-		NetworkServer.RegisterHandler (MsgType.Highest + 2, OnRedDecide);
+		NetworkServer.RegisterHandler (MsgType.Highest + 2, OnBlueDecide);
 
 	}
 	
@@ -51,7 +51,6 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Red;
-		print ("red");
 	}
 
 	void OnBlueDecide(NetworkMessage netMsg) {
@@ -60,6 +59,5 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Blue;
-		print ("blue");
 	}
 }
