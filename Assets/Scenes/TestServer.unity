@@ -136,8 +136,8 @@ MonoBehaviour:
     m_PacketSize: 1500
     m_FragmentSize: 500
     m_ResendTimeout: 1200
-    m_DisconnectTimeout: 2000
-    m_ConnectTimeout: 2000
+    m_DisconnectTimeout: 300000
+    m_ConnectTimeout: 300000
     m_MinUpdateTimeout: 10
     m_PingTimeout: 500
     m_ReducedPingTimeout: 100
