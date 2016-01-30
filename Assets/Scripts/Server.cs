@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Server : NetworkBehaviour {
+public class Server : MonoBehaviour {
 
 	public GameObject cube;
 	NetworkClient local;
@@ -15,7 +15,7 @@ public class Server : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (NetworkServer.connections.Count > 0) {
-			NetworkServer.Spawn (cube);
+			NetworkServer.Spawn((GameObject)GameObject.Instantiate (cube,Vector3.zero, Quaternion.Euler(Vector3.forward)));
 		}
 	
 	}
