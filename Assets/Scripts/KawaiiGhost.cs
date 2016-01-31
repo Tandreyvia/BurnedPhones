@@ -55,15 +55,4 @@ public class KawaiiGhost : NetworkBehaviour
             }
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (enemy != null)
-        {
-            if (other.gameObject.GetComponent<PlayerUnit>() == enemy)
-            {
-                //Do the antimovement thing here
-            }
-        }
-    }
 }
