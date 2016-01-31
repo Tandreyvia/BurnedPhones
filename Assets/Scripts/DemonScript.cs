@@ -4,10 +4,16 @@ using System.Collections;
 
 public class DemonScript : NetworkBehaviour {
 
+    public enum demonColor
+    {
+        Red, Blue, Green, Gold
+    };
+
     public float velocity;
     public float spawnTime;
     float timeSinceSpawn;
     public Vector3 spawnVector;
+    public demonColor whichDemon;
 
 	// Use this for initialization
 	void Start () {

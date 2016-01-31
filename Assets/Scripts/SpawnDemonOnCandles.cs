@@ -44,27 +44,29 @@ public class SpawnDemonOnCandles : NetworkBehaviour
 			if (PlayerUnit.localSingleton.holdingCandle && candlesReceived < candlesNeeded) {
 				PlayerUnit.localSingleton.holdingCandle = false;
 				candlesReceived++;
-			} if (goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat> () != null) {
-				goatsReceived++;
-				Destroy (other.gameObject);
-			}
+			} 
 		}
-			
-     /*   if(isServer)
+        if (isServer && goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat>() != null)
         {
-            if (candlesReceived < candlesNeeded)
-            {
-                candlesReceived++;
-                other.GetComponent<PlayerUnit>().holdingCandle = false;
-            }
-            if (goatsReceived < goatsNeeded)
-            {
-                if (other.GetComponent<KawaiiGoat>() != null)
-                {
-                    goatsReceived++;
-                    Destroy(other);
-                }
-            }
-        }*/
+            goatsReceived++;
+            Destroy(other.gameObject);
+        }
+
+        /*   if(isServer)
+           {
+               if (candlesReceived < candlesNeeded)
+               {
+                   candlesReceived++;
+                   other.GetComponent<PlayerUnit>().holdingCandle = false;
+               }
+               if (goatsReceived < goatsNeeded)
+               {
+                   if (other.GetComponent<KawaiiGoat>() != null)
+                   {
+                       goatsReceived++;
+                       Destroy(other);
+                   }
+               }
+           }*/
     }
 }
