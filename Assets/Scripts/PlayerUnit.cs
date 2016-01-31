@@ -31,7 +31,8 @@ public class PlayerUnit : NetworkBehaviour {
         if (!isServer && hasAuthority)
         {
             if (LevelState.singleton.gameActive)
-            {
+			{
+				print ("ha");
                 UpdateInput();
                 UpdateMovement();
             }

@@ -10,6 +10,9 @@ public class Server : NetworkBehaviour {
 
 	public NetworkManager manager;
 
+	public GameObject RedSpawn;
+	public GameObject BlueSpawn;
+
 	List<NetworkConnection> connections = new List<NetworkConnection>();
 	public List<Team> teams = new List<Team> ();
 
@@ -31,7 +34,6 @@ public class Server : NetworkBehaviour {
 	void Update () {
         if(!LevelState.singleton.gameActive && Input.GetKey("left shift") && Input.GetKey("s"))
         {
-            print("starting game!");
             LevelState.singleton.gameActive = true;
         }
 	}
@@ -60,6 +62,9 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Red;
+		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
+			NetworkServer.FindLocalObject (id).transform.position = RedSpawn.transform.position;
+		}
 	}
 
 	void OnBlueDecide(NetworkMessage netMsg) {
@@ -68,5 +73,8 @@ public class Server : NetworkBehaviour {
 		if (connIndex == -1)
 			return;
 		teams [connIndex] = Team.Blue;
+		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
+			NetworkServer.FindLocalObject (id).transform.position = BlueSpawn.transform.position;
+		}
 	}
 }
