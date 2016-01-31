@@ -30,8 +30,11 @@ public class PlayerUnit : NetworkBehaviour {
     void Update () {
         if (!isServer && hasAuthority)
         {
-            UpdateInput();
-            UpdateMovement();
+            if (LevelState.singleton.gameActive)
+            {
+                UpdateInput();
+                UpdateMovement();
+            }
         }
 	}
 
