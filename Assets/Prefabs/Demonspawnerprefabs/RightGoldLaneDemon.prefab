@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21237498}
   - 114: {fileID: 11493392}
   - 114: {fileID: 11441916}
+  - 114: {fileID: 11473466}
   m_Layer: 0
   m_Name: RightGoldLaneDemon
   m_TagString: Untagged
@@ -45,6 +46,18 @@ MonoBehaviour:
   spawnTime: 0
   spawnVector: {x: 0, y: 0, z: 0}
   whichDemon: 3
+--- !u!114 &11473466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3a51f184298054facda303f9d8405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 999999
 --- !u!114 &11493392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +147,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lifetime
+      value: 999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
