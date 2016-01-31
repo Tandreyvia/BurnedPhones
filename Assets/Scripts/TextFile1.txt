@@ -1,0 +1,13 @@
+Background
+	-Walls
+	-Floors
+	-Grass
+	-Water/Shore
+	-Burned Ground
+Goat Sprite + Heart Sprite
+Rune Sprite
+Player Sprite
+Demon Sprite
+Candle Sprite
+Defense Sprites
+Animations

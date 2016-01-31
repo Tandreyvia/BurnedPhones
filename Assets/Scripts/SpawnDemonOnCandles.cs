@@ -44,9 +44,9 @@ public class SpawnDemonOnCandles : NetworkBehaviour
             }
             if (goatsReceived < goatsNeeded)
             {
-                goatsReceived++;
                 if (other.GetComponent<KawaiiGoat>() != null)
                 {
+                    goatsReceived++;
                     Destroy(other);
                 }
             }
