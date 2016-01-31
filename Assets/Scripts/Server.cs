@@ -29,6 +29,11 @@ public class Server : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!LevelState.singleton.gameActive && Input.GetKey("left shift") && Input.GetKey("s"))
+        {
+            print("starting game!");
+            LevelState.singleton.gameActive = true;
+        }
 	}
 
 	NetworkConnection checkingEquality;
