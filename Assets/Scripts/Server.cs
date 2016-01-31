@@ -63,7 +63,7 @@ public class Server : NetworkBehaviour {
 			return;
 		teams [connIndex] = Team.Red;
 		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
-			NetworkServer.FindLocalObject (id).transform.position = RedSpawn.transform.position;
+			NetworkServer.FindLocalObject (id).GetComponent<PlayerUnit> ().SetPosition (RedSpawn.transform.position);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class Server : NetworkBehaviour {
 			return;
 		teams [connIndex] = Team.Blue;
 		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
-			NetworkServer.FindLocalObject (id).transform.position = BlueSpawn.transform.position;
+			NetworkServer.FindLocalObject (id).GetComponent<PlayerUnit> ().SetPosition (BlueSpawn.transform.position);
 		}
 	}
 }
