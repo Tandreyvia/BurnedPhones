@@ -36,7 +36,23 @@ public class Server : NetworkBehaviour {
         {
             LevelState.singleton.gameActive = true;
         }
-	}
+
+        if (Input.GetKey("left shift") && Input.GetKey("1"))
+        {
+            LevelState.singleton.blackoutLeft = true;
+        }
+
+        if (Input.GetKey("left shift") && Input.GetKey("2"))
+        {
+            LevelState.singleton.blackoutRight = true;
+        }
+
+        if (Input.GetKey("left shift") && Input.GetKey("3"))
+        {
+            LevelState.singleton.blackoutLeft = false;
+            LevelState.singleton.blackoutRight = false;
+        }
+    }
 
 	NetworkConnection checkingEquality;
 

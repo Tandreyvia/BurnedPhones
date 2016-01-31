@@ -29,12 +29,9 @@ public class KawaiiGoat : NetworkBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (friend == null)
+        if (!isServer && PlayerUnit.localSingleton != null && other.gameObject.GetComponent<PlayerUnit>() == PlayerUnit.localSingleton)
         {
-            if (other.gameObject.GetComponent<PlayerUnit>() != null)
-            {
-                friend = other.gameObject.GetComponent<PlayerUnit>();
-            }
+            PlayerUnit.localSingleton.GetGoated();
         }
     }
 }

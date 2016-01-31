@@ -20,18 +20,39 @@ public class KawaiiGhost : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        timelived += Time.deltaTime;
-        if(timelived >= lifetime)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        if (enemy != null)
-        {
-            Vector3 velocity = enemy.transform.position - transform.position;
-            velocity.z = 0;
+        if (isServer) {
+            timelived += Time.deltaTime;
+            if (timelived >= lifetime)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            if (enemy != null)
+            {
+                Vector3 velocity = enemy.transform.position - transform.position;
+                velocity.z = 0;
 
-            transform.Translate(velocity.normalized * movementSpeed * Time.smoothDeltaTime);
+                transform.Translate(velocity.normalized * movementSpeed * Time.smoothDeltaTime);
+            }
+            else
+            {
+                PlayerUnit[] players = Object.FindObjectsOfType<PlayerUnit>();
+                PlayerUnit closestPlayer = null;
+                float closestDistance = 1000000;
+                foreach(PlayerUnit player in players)
+                {
+                    float distanceFromPlayer = (new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y)).magnitude;
+                    if(closestPlayer == null || distanceFromPlayer < closestDistance)
+                    {
+                        closestPlayer = player;
+                        closestDistance = distanceFromPlayer;
+                    }
+                }
+                if(closestPlayer != null)
+                {
+                    enemy = closestPlayer;
+                }
+            }
         }
     }
 

@@ -7,6 +7,10 @@ public class LevelState : NetworkBehaviour {
 
     [SyncVar]
     public bool gameActive = false;
+    [SyncVar]
+    public bool blackoutLeft = false;
+    [SyncVar]
+    public bool blackoutRight = false;
 
     // Use this for initialization
     void Start () {

@@ -9,10 +9,19 @@ public class PlayerUnit : NetworkBehaviour {
     bool holdingTap = false;
 
     float baseMovementSpeed = 6.0f;
+    float burningMovementSpeed = 10.0f;
 
-    float timeLeftOnFire = 0.0f;
-    float timeLeftOnGhost = 0.0f;
+    public float timeLeftOnFire = 0.0f;
+    float timeLeftFireImmunity = 0.0f;
+
     public bool holdingCandle = false;
+    public bool holdingExtinguisher = false;
+
+    float timeLeftUntilBurningDirectionChange = 0.0f;
+    Vector3 burningVelocity = new Vector3(0, 0, 0);
+
+    public float timeLeftOnGoating = 0.0f;
+    float totalGoatingDuration = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +33,38 @@ public class PlayerUnit : NetworkBehaviour {
 
     public void PickUpCandle()
     {
+        DropExtinguisher();
         holdingCandle = true;
+    }
+
+    public void DropCandle()
+    {
+        holdingCandle = false;
+    }
+
+    public void PickUpExtinguisher()
+    {
+        DropCandle();
+        holdingExtinguisher = true;
+    }
+
+    public void DropExtinguisher()
+    {
+        holdingExtinguisher = false;
+    }
+
+    public void Ignite()
+    {
+        if(timeLeftOnFire <= 0.0f && timeLeftFireImmunity <= 0.0f && !holdingExtinguisher)
+        {
+            timeLeftOnFire = 5.0f;
+            timeLeftFireImmunity = 7.0f;
+        }
+    }
+
+    public void GetGoated()
+    {
+        timeLeftOnGoating = totalGoatingDuration;
     }
 
     // Update is called once per frame
@@ -33,9 +73,13 @@ public class PlayerUnit : NetworkBehaviour {
         {
             if (LevelState.singleton.gameActive)
 			{
-				print ("ha");
                 UpdateInput();
                 UpdateMovement();
+
+                timeLeftOnFire -= Time.smoothDeltaTime;
+                timeLeftFireImmunity -= Time.smoothDeltaTime;
+                timeLeftUntilBurningDirectionChange -= Time.smoothDeltaTime;
+                timeLeftOnGoating -= Time.smoothDeltaTime;
             }
         }
 	}
@@ -63,6 +107,18 @@ public class PlayerUnit : NetworkBehaviour {
 
             transform.Translate(velocity * Time.smoothDeltaTime);
         }
+        else if (timeLeftOnFire > 0.0f)
+        {
+            if(timeLeftUntilBurningDirectionChange <= 0.0f)
+            {
+                float directionSeed = Random.value * Mathf.PI * 2.0f;
+                burningVelocity = new Vector3(Mathf.Cos(directionSeed), Mathf.Sin(directionSeed), 0).normalized;
+
+                timeLeftUntilBurningDirectionChange = 0.125f;
+            }
+
+            transform.Translate(burningVelocity * burningMovementSpeed * Time.smoothDeltaTime);
+        }
 
         // for debugging on pc
         Vector3 debugVelocity = new Vector3(0, 0, 0);
@@ -80,6 +136,6 @@ public class PlayerUnit : NetworkBehaviour {
 
     public bool AbleToMove()
     {
-        return timeLeftOnFire <= 0 && timeLeftOnGhost <= 0;
+        return timeLeftOnFire <= 0 && timeLeftOnGoating <= 0;
     }
 }
