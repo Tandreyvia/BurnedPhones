@@ -209,7 +209,41 @@ public class PlayerUnit : NetworkBehaviour {
 		RpcSetPosition (t);
 	}
 
-	[ClientRpc]
+    public void GiveCandle()
+    {
+        CmdGiveCandleToServer();
+    }
+
+    [Command]
+    void CmdGiveCandleToServer()
+    {
+        print("candle received");
+        SpawnDemonOnCandles spawnToUse = null;
+        SpawnDemonOnCandles[] spawns = Object.FindObjectsOfType<SpawnDemonOnCandles>();
+        SpawnDemonOnCandles closestSpawn = null;
+        float closestDistance = 1000000;
+        foreach (SpawnDemonOnCandles currentSpawn in spawns)
+        {
+            float distanceFromPlayer = (new Vector2(currentSpawn.transform.position.x - transform.position.x, currentSpawn.transform.position.y - transform.position.y)).magnitude;
+            if (closestSpawn == null || distanceFromPlayer < closestDistance)
+            {
+                closestSpawn = currentSpawn;
+                closestDistance = distanceFromPlayer;
+            }
+        }
+        if (closestSpawn != null)
+        {
+            print("found spawn");
+            spawnToUse = closestSpawn;
+        }
+
+        if(spawnToUse != null)
+        {
+            spawnToUse.candlesReceived++;
+        }
+    }
+
+    [ClientRpc]
 	void RpcSetPosition(Vector3 t) {
 		gameObject.transform.position = t;
 	}

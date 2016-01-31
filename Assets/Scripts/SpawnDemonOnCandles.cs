@@ -10,9 +10,9 @@ public class SpawnDemonOnCandles : NetworkBehaviour
     public int candlesNeeded;
     public int goatsNeeded;
 	[SyncVar]
-    int goatsReceived;
+    public int goatsReceived;
 	[SyncVar]
-    int candlesReceived;
+    public int candlesReceived;
 
     // Use this for initialization
     void Start()
@@ -37,36 +37,42 @@ public class SpawnDemonOnCandles : NetworkBehaviour
         }
     }
 
-    void OnTriggerEnter2d(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-		print ("ontriggerenter");
-		if (PlayerUnit.localSingleton != null && other.gameObject.GetComponent<PlayerUnit> () == PlayerUnit.localSingleton) {
-			if (PlayerUnit.localSingleton.holdingCandle && candlesReceived < candlesNeeded) {
-				PlayerUnit.localSingleton.holdingCandle = false;
-				candlesReceived++;
-			} 
-		}
-        if (isServer && goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat>() != null)
+        if (!isServer)
         {
-            goatsReceived++;
-            Destroy(other.gameObject);
-        }
+            print("ontriggerenter");
+            if (candlesReceived < candlesNeeded && PlayerUnit.localSingleton != null && other.gameObject.GetComponent<PlayerUnit>() == PlayerUnit.localSingleton)
+            {
+                if (PlayerUnit.localSingleton.holdingCandle && candlesReceived < candlesNeeded)
+                {
+                    PlayerUnit.localSingleton.holdingCandle = false;
+                    PlayerUnit.localSingleton.GiveCandle();
+                }
+            }
 
-        /*   if(isServer)
-           {
-               if (candlesReceived < candlesNeeded)
-               {
-                   candlesReceived++;
-                   other.GetComponent<PlayerUnit>().holdingCandle = false;
-               }
-               if (goatsReceived < goatsNeeded)
-               {
-                   if (other.GetComponent<KawaiiGoat>() != null)
-                   {
-                       goatsReceived++;
-                       Destroy(other);
-                   }
-               }
-           }*/
+            if (goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat>() != null)
+            {
+                goatsReceived++;
+                Destroy(other.gameObject);
+            }
+        }
+			
+     /*   if(isServer)
+        {
+            if (candlesReceived < candlesNeeded)
+            {
+                candlesReceived++;
+                other.GetComponent<PlayerUnit>().holdingCandle = false;
+            }
+            if (goatsReceived < goatsNeeded)
+            {
+                if (other.GetComponent<KawaiiGoat>() != null)
+                {
+                    goatsReceived++;
+                    Destroy(other);
+                }
+            }
+        }*/
     }
 }

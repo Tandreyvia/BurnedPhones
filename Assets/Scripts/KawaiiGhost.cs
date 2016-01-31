@@ -20,7 +20,8 @@ public class KawaiiGhost : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isServer) {
+        if (isServer)
+        {
             timelived += Time.deltaTime;
             if (timelived >= lifetime)
             {
@@ -39,16 +40,16 @@ public class KawaiiGhost : NetworkBehaviour
                 PlayerUnit[] players = Object.FindObjectsOfType<PlayerUnit>();
                 PlayerUnit closestPlayer = null;
                 float closestDistance = 1000000;
-                foreach(PlayerUnit player in players)
+                foreach (PlayerUnit player in players)
                 {
                     float distanceFromPlayer = (new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y)).magnitude;
-                    if(closestPlayer == null || distanceFromPlayer < closestDistance)
+                    if (closestPlayer == null || distanceFromPlayer < closestDistance)
                     {
                         closestPlayer = player;
                         closestDistance = distanceFromPlayer;
                     }
                 }
-                if(closestPlayer != null)
+                if (closestPlayer != null)
                 {
                     enemy = closestPlayer;
                 }
