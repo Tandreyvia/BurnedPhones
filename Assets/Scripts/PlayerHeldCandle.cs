@@ -12,11 +12,11 @@ public class PlayerHeldCandle : MonoBehaviour {
 	void Update () {
 	    if(GetComponentInParent<PlayerUnit>().holdingCandle)
         {
-            GetComponent<MeshRenderer>().enabled = true;
+			GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
 	}
 }

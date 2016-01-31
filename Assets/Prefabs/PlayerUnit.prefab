@@ -374,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267f70889e6cb0f47a705d114712a66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseMovementSpeed: 3
+  burningMovementSpeed: 6
   timeLeftOnFire: 0
   holdingCandle: 0
   holdingExtinguisher: 0
@@ -6710,6 +6712,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseMovementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burningMovementSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: holdingCandle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
