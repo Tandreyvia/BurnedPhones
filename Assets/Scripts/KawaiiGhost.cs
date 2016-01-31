@@ -64,4 +64,5 @@ public class KawaiiGhost : NetworkBehaviour
             PlayerUnit.localSingleton.GetGoated();
         }
     }
+
 }
