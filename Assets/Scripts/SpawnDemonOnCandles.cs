@@ -44,7 +44,7 @@ public class SpawnDemonOnCandles : NetworkBehaviour
                     candlesReceived = 0;
                     goatsReceived = 0;
                     GameObject newDemon = (GameObject)GameObject.Instantiate(demon, new Vector3(gameObject.transform.position.x + xSpawnDifference, gameObject.transform.position.y), transform.rotation);
-                    newDemon.GetComponent<DemonScript>().spawnVector = transform.forward;
+					newDemon.GetComponent<DemonScript>().spawnVector = -transform.right;
                     NetworkServer.Spawn(newDemon);
                 }
                 if(causeDarkness)

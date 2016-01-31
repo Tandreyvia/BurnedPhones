@@ -9,8 +9,8 @@ public class PlayerUnit : NetworkBehaviour {
     Vector2 inputTarget = new Vector2(0, 0);
     bool holdingTap = false;
 
-    float baseMovementSpeed = 6.0f;
-    float burningMovementSpeed = 10.0f;
+    public float baseMovementSpeed = 3.0f;
+    public float burningMovementSpeed = 5.0f;
 
     public float timeLeftOnFire = 0.0f;
     float timeLeftFireImmunity = 0.0f;
