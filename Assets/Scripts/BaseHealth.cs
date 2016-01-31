@@ -37,19 +37,25 @@ public class BaseHealth : NetworkBehaviour {
 
     void OnTriggerEnter2d(Collider2D other)
     {
+		print ("trigger");
         if (isServer)
         {
+			print ("isserver");
             if (other.GetComponent<DemonScript>() != null)
             {
+				print ("a deomo");
                 if(other.GetComponent<DemonScript>().whichDemon == DemonScript.demonColor.Gold)
                 {
+					print ("one demon");
                     health -= goldDamage;
                 }
                 else
                 {
+					print ("one demon");
+
                     health -= rgbDamage;
                 }
-                Destroy(other);
+				Destroy(other.gameObject);
             }
         }
     }

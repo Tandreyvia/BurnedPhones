@@ -11,7 +11,9 @@ GameObject:
   - 212: {fileID: 21293688}
   - 114: {fileID: 11474550}
   - 114: {fileID: 11426720}
-  m_Layer: 0
+  - 61: {fileID: 6190986}
+  - 114: {fileID: 11485466}
+  m_Layer: 18
   m_Name: LeftRedLaneDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,6 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6190986
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187486}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 4.49, y: 3.94}
 --- !u!114 &11426720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,6 +93,26 @@ MonoBehaviour:
     i15: 106
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &11485466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!212 &21293688
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -122,6 +158,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: velocity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
