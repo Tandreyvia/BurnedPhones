@@ -11,6 +11,7 @@ public class PlayerUnit : NetworkBehaviour {
     float baseMovementSpeed = 6.0f;
 
     float timeLeftOnFire = 0.0f;
+    float timeLeftOnGhost = 0.0f;
     public bool holdingCandle = false;
 
     // Use this for initialization
@@ -79,6 +80,6 @@ public class PlayerUnit : NetworkBehaviour {
 
     public bool AbleToMove()
     {
-        return timeLeftOnFire <= 0;
+        return timeLeftOnFire <= 0 && timeLeftOnGhost <= 0;
     }
 }
