@@ -9,13 +9,15 @@ public class SpawnDemonOnCandles : NetworkBehaviour
     public float xSpawnDifference;
     public int candlesNeeded;
     public int goatsNeeded;
+	[SyncVar]
     int goatsReceived;
+	[SyncVar]
     int candlesReceived;
 
     // Use this for initialization
     void Start()
     {
-
+		
     }
 
     // Update is called once per frame
@@ -23,9 +25,11 @@ public class SpawnDemonOnCandles : NetworkBehaviour
     {
         if (isServer)
         {
-            if (candlesNeeded <= candlesReceived)
+			if (candlesNeeded <= candlesReceived && goatsNeeded <= goatsReceived)
             {
+				print ("demon");
                 candlesReceived = 0;
+				goatsReceived = 0;
                 GameObject newDemon = (GameObject)GameObject.Instantiate(demon, new Vector3(gameObject.transform.position.x + xSpawnDifference, gameObject.transform.position.y), Quaternion.Euler(0, 0, 0));
                 newDemon.GetComponent<DemonScript>().spawnVector = transform.forward;
                 NetworkServer.Spawn(newDemon);
@@ -35,7 +39,18 @@ public class SpawnDemonOnCandles : NetworkBehaviour
 
     void OnTriggerEnter2d(Collider2D other)
     {
-        if(isServer)
+		print ("ontriggerenter");
+		if (PlayerUnit.localSingleton != null && other.gameObject.GetComponent<PlayerUnit> () == PlayerUnit.localSingleton) {
+			if (PlayerUnit.localSingleton.holdingCandle && candlesReceived < candlesNeeded) {
+				PlayerUnit.localSingleton.holdingCandle = false;
+				candlesReceived++;
+			} if (goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat> () != null) {
+				goatsReceived++;
+				Destroy (other.gameObject);
+			}
+		}
+			
+     /*   if(isServer)
         {
             if (candlesReceived < candlesNeeded)
             {
@@ -50,6 +65,6 @@ public class SpawnDemonOnCandles : NetworkBehaviour
                     Destroy(other);
                 }
             }
-        }
+        }*/
     }
 }

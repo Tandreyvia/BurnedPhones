@@ -33,7 +33,6 @@ public class PlayerUnit : NetworkBehaviour {
         {
             if (LevelState.singleton.gameActive)
 			{
-				print ("ha");
                 UpdateInput();
                 UpdateMovement();
             }
