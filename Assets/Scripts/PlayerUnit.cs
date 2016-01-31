@@ -138,4 +138,13 @@ public class PlayerUnit : NetworkBehaviour {
     {
         return timeLeftOnFire <= 0 && timeLeftOnGoating <= 0;
     }
+
+	public void SetPosition(Vector2 t) {
+		RpcSetPosition (t);
+	}
+
+	[ClientRpc]
+	void RpcSetPosition(Vector3 t) {
+		gameObject.transform.position = t;
+	}
 }

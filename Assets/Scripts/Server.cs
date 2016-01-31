@@ -21,8 +21,6 @@ public class Server : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //manager.connectionConfig.FragmentSize = 1000;
-        //manager.connectionConfig.MaxSentMessageQueueSize = 5000;
 		manager.StartServer ();
 		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
 		NetworkServer.RegisterHandler (MsgType.Highest + 1, OnRedDecide);
@@ -79,7 +77,7 @@ public class Server : NetworkBehaviour {
 			return;
 		teams [connIndex] = Team.Red;
 		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
-			NetworkServer.FindLocalObject (id).transform.position = RedSpawn.transform.position;
+			NetworkServer.FindLocalObject (id).GetComponent<PlayerUnit> ().SetPosition (RedSpawn.transform.position);
 		}
 	}
 
@@ -90,7 +88,7 @@ public class Server : NetworkBehaviour {
 			return;
 		teams [connIndex] = Team.Blue;
 		foreach( NetworkInstanceId id in netMsg.conn.clientOwnedObjects) {
-			NetworkServer.FindLocalObject (id).transform.position = BlueSpawn.transform.position;
+			NetworkServer.FindLocalObject (id).GetComponent<PlayerUnit> ().SetPosition (BlueSpawn.transform.position);
 		}
 	}
 }
