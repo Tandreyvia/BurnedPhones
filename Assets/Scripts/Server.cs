@@ -37,18 +37,18 @@ public class Server : NetworkBehaviour {
 
         if (Input.GetKey("left shift") && Input.GetKey("1"))
         {
-            LevelState.singleton.blackoutLeft = true;
+            LevelState.singleton.blackoutLeft = 10.0f;
         }
 
         if (Input.GetKey("left shift") && Input.GetKey("2"))
         {
-            LevelState.singleton.blackoutRight = true;
+            LevelState.singleton.blackoutRight = 10.0f;
         }
 
         if (Input.GetKey("left shift") && Input.GetKey("3"))
         {
-            LevelState.singleton.blackoutLeft = false;
-            LevelState.singleton.blackoutRight = false;
+            LevelState.singleton.blackoutLeft = 0;
+            LevelState.singleton.blackoutRight = 0;
         }
     }
 

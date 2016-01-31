@@ -65,4 +65,12 @@ public class KawaiiGhost : NetworkBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!isServer && PlayerUnit.localSingleton != null && other.gameObject.GetComponent<PlayerUnit>() == PlayerUnit.localSingleton)
+        {
+            PlayerUnit.localSingleton.GetGoated();
+        }
+    }
+
 }

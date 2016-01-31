@@ -8,9 +8,9 @@ public class LevelState : NetworkBehaviour {
     [SyncVar]
     public bool gameActive = false;
     [SyncVar]
-    public bool blackoutLeft = false;
+    public float blackoutLeft = 0.0f;
     [SyncVar]
-    public bool blackoutRight = false;
+    public float blackoutRight = 0.0f;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +19,7 @@ public class LevelState : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        blackoutLeft = Mathf.Clamp(blackoutLeft - Time.smoothDeltaTime, 0, 1);
+        blackoutRight = Mathf.Clamp(blackoutRight - Time.smoothDeltaTime, 0, 1);
+    }
 }

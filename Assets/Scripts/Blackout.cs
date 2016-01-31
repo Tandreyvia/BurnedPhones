@@ -14,11 +14,11 @@ public class Blackout : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(LevelState.singleton.blackoutLeft && PlayerUnit.localSingleton != null && PlayerUnit.localSingleton.transform.position.x < 0)
+	    if(LevelState.singleton.blackoutLeft > 0 && PlayerUnit.localSingleton != null && PlayerUnit.localSingleton.transform.position.x < 0)
         {
             blackoutOn = true;
         }
-        else if (LevelState.singleton.blackoutRight && PlayerUnit.localSingleton != null && PlayerUnit.localSingleton.transform.position.x > 0)
+        else if (LevelState.singleton.blackoutRight > 0 && PlayerUnit.localSingleton != null && PlayerUnit.localSingleton.transform.position.x > 0)
         {
             blackoutOn = true;
         }

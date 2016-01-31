@@ -39,7 +39,7 @@ public class GlobalBlackout : MonoBehaviour {
         if (PlayerUnit.localSingleton != null)
             return false;
 
-        return (isLeftBlackout && LevelState.singleton.blackoutLeft)
-            || (!isLeftBlackout && LevelState.singleton.blackoutRight);
+        return (isLeftBlackout && LevelState.singleton.blackoutLeft > 0)
+            || (!isLeftBlackout && LevelState.singleton.blackoutRight > 0);
     }
 }
