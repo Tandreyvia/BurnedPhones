@@ -66,7 +66,7 @@ public class Server : NetworkBehaviour {
     {
 		connections.Add (netMsg.conn);
 		teams.Add (Team.Undeclared);
-        NetworkServer.Spawn((GameObject)GameObject.Instantiate (goat, new Vector3(2, 4, transform.position.z), transform.rotation));
+        //NetworkServer.Spawn((GameObject)GameObject.Instantiate (goat, new Vector3(2, 4, transform.position.z), transform.rotation));
         print("meow~");
     }
 

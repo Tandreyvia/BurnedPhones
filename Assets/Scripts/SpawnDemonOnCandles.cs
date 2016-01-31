@@ -50,13 +50,17 @@ public class SpawnDemonOnCandles : NetworkBehaviour
                     PlayerUnit.localSingleton.GiveCandle();
                 }
             }
-
+        }
+        else
+        {
             if (goatsReceived < goatsNeeded && other.GetComponent<KawaiiGoat>() != null)
             {
+                print("goat received");
                 goatsReceived++;
                 Destroy(other.gameObject);
             }
         }
+
 			
      /*   if(isServer)
         {

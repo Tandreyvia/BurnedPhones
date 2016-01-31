@@ -26,4 +26,15 @@ public class KawaiiGoat : NetworkBehaviour {
                 transform.Translate(velocity.normalized * movementSpeed * Time.smoothDeltaTime);
         }
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (friend == null)
+        {
+            if (other.gameObject.GetComponent<PlayerUnit>() != null)
+            {
+                friend = other.gameObject.GetComponent<PlayerUnit>();
+            }
+        }
+    }
 }
