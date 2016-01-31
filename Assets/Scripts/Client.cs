@@ -13,6 +13,7 @@ public class Client : NetworkBehaviour {
 	void Start () {
 		client = manager.StartClient ();
 		camera.AddComponent<TeamSelectGui> ().client = this.client;
+		camera.GetComponent<Camera> ().orthographicSize = 4;
 	}
 	
 	// Update is called once per frame
