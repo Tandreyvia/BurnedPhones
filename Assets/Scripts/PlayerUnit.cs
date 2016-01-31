@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.CrossPlatformInput;
 using System.Collections;
 
 public class PlayerUnit : NetworkBehaviour {
@@ -22,6 +23,9 @@ public class PlayerUnit : NetworkBehaviour {
 
     public float timeLeftOnGoating = 0.0f;
     float totalGoatingDuration = 0.5f;
+
+    int movementMethod = 1;
+    Vector2 joystickDirection = new Vector2(0, 0);
 
     // Use this for initialization
     void Start () {
@@ -86,30 +90,92 @@ public class PlayerUnit : NetworkBehaviour {
 
     void UpdateInput()
     {
-        holdingTap = (Input.touchCount > 0);
-
-        if(holdingTap)
+        // old movement mode (dont remove)
+        if (movementMethod == 1)
         {
-            Vector3 worldTapLocation = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            inputTarget = new Vector2(worldTapLocation.x, worldTapLocation.y);
+            holdingTap = (Input.touchCount > 0);
+
+            if (holdingTap)
+            {
+                Vector3 worldTapLocation = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                inputTarget = new Vector2(worldTapLocation.x, worldTapLocation.y);
+            }
+        }
+        else if (movementMethod == 2)
+        {
+            // new movement mode with joystick
+            joystickDirection = new Vector2(0, 0);
+
+            // x
+            if (CrossPlatformInputManager.GetAxis("Horizontal") >= 0.5f)
+            {
+                joystickDirection.x = 1.0f;
+            }
+            else if (CrossPlatformInputManager.GetAxis("Horizontal") <= -0.5f)
+            {
+                joystickDirection.x = -1.0f;
+            }
+            else
+            {
+                joystickDirection.x = 0.0f;
+            }
+
+            // y
+            if (CrossPlatformInputManager.GetAxis("Vertical") >= 0.5f)
+            {
+                joystickDirection.y = 1.0f;
+            }
+            else if (CrossPlatformInputManager.GetAxis("Vertical") <= -0.5f)
+            {
+                joystickDirection.y = -1.0f;
+            }
+            else
+            {
+                joystickDirection.y = 0.0f;
+            }
+        }
+        else if (movementMethod == 3)
+        {
+            // allows free movement in more than 8 directions, and variable speed
+            joystickDirection.x = CrossPlatformInputManager.GetAxis("Horizontal");
+            joystickDirection.y = CrossPlatformInputManager.GetAxis("Vertical");
         }
     }
 
     void UpdateMovement()
     {
-        // on mobile touchscreen
-        if (AbleToMove() && holdingTap)
+        if (AbleToMove())
         {
-            Vector3 velocity = new Vector3(inputTarget.x, inputTarget.y, transform.position.z)
-                             - new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            if (movementMethod == 1)
+            {
+                if (holdingTap)
+                {
+                    Vector3 velocity = new Vector3(inputTarget.x, inputTarget.y, transform.position.z)
+                                     - new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-            velocity = velocity.normalized * CalculateNetMovementSpeed();
+                    velocity = velocity.normalized * CalculateNetMovementSpeed();
 
-            transform.Translate(velocity * Time.smoothDeltaTime);
+                    transform.Translate(velocity * Time.smoothDeltaTime);
+                }
+            }
+            else if (movementMethod == 2)
+            {
+                if (joystickDirection.x != 0 || joystickDirection.y != 0)
+                {
+                    transform.Translate(joystickDirection.normalized * CalculateNetMovementSpeed() * Time.smoothDeltaTime);
+                }
+            }
+            else if (movementMethod == 3)
+            {
+                if (joystickDirection.x != 0 || joystickDirection.y != 0)
+                {
+                    transform.Translate(joystickDirection * CalculateNetMovementSpeed() * Time.smoothDeltaTime);
+                }
+            }
         }
         else if (timeLeftOnFire > 0.0f)
         {
-            if(timeLeftUntilBurningDirectionChange <= 0.0f)
+            if (timeLeftUntilBurningDirectionChange <= 0.0f)
             {
                 float directionSeed = Random.value * Mathf.PI * 2.0f;
                 burningVelocity = new Vector3(Mathf.Cos(directionSeed), Mathf.Sin(directionSeed), 0).normalized;

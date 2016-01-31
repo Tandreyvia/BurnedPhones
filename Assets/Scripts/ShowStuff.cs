@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 using System.Collections;
 
 public class ShowStuff : MonoBehaviour {
@@ -11,8 +12,8 @@ public class ShowStuff : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.touchCount > 0)
-            GetComponent<Text>().text = Input.GetTouch(0).position.ToString() + Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-
+        //if(Input.touchCount > 0)
+        //GetComponent<Text>().text = Input.GetTouch(0).position.ToString() + Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        GetComponent<Text>().text = CrossPlatformInputManager.GetAxis("Horizontal").ToString();
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - 64: {fileID: 6422212}
   - 23: {fileID: 2302094}
   - 114: {fileID: 11446370}
+  - 114: {fileID: 11418950}
   m_Layer: 0
   m_Name: Global Blackout - Left
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -106,6 +107,17 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11418950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17053f3796c3d54198b4e6557fae589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11446370
 MonoBehaviour:
   m_ObjectHideFlags: 1
