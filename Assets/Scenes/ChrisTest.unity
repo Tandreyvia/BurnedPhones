@@ -292,7 +292,7 @@ GameObject:
   - 61: {fileID: 344011915}
   - 114: {fileID: 344011914}
   - 114: {fileID: 344011913}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CenterRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408450, guid: 7ed841afb63f0a64194cbf37a2dd6f2d, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 183058, guid: 7ed841afb63f0a64194cbf37a2dd6f2d, type: 2}
       propertyPath: m_Name
