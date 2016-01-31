@@ -261,7 +261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &132169171
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,9 +304,9 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 124574, guid: 01cfcdf779cbd43ecbba48fa32376647, type: 2}
-  - {fileID: 125324, guid: fe62de28f6d684d64b1ef17afe368925, type: 2}
-  - {fileID: 134610, guid: 9e9c39ff8cba14394baeec6da1eea495, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_CustomConfig: 1
   m_MaxConnections: 10000
   m_ConnectionConfig:
@@ -395,10 +395,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 726622629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 756a5529fe2bfb64ebc3def2fa4960c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 583c79af880648b48b969cf85a4c5efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   demon: {fileID: 192174, guid: 778f1b365aa05ba4888acd3e0fb26d7f, type: 2}
+  xSpawnDifference: 0
+  candlesNeeded: 1
+  goatsNeeded: 0
 --- !u!114 &726622632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +861,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 177712, guid: 9e9c39ff8cba14394baeec6da1eea495, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e9c39ff8cba14394baeec6da1eea495, type: 2}
   m_IsPrefabParent: 0
@@ -888,8 +895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85f085b7b49e4cdea668a5adb3cf496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 124574, guid: 01cfcdf779cbd43ecbba48fa32376647, type: 2}
   manager: {fileID: 132169172}
+  teams: 
+  goat: {fileID: 183058, guid: 7ed841afb63f0a64194cbf37a2dd6f2d, type: 2}
 --- !u!4 &1666230692
 Transform:
   m_ObjectHideFlags: 0
